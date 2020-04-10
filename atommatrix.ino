@@ -18,11 +18,14 @@ void setup(void)
 void loop(void)
 {
     static uint8_t hue = 0;
+    static uint32_t last_time = 0;
 
-    Serial.println(hue);
-    hue++;
+    uint32_t time = millis() / 50;
+    if (time != last_time) {
+        last_time = time;
+        hue++;
+    }
+
     CRGB color = CHSV(hue, 255, 64);
     FastLED.showColor(color);
-
-    delay(50);
 }
