@@ -13,6 +13,7 @@ void setup(void)
     Serial.println("\nHello World!");
 
     FastLED.addLeds < WS2812B, DATA_PIN_LED, GRB > (leds, 25);
+    FastLED.setBrightness(20);
 }
 
 void loop(void)
@@ -26,6 +27,6 @@ void loop(void)
         hue++;
     }
 
-    CRGB color = CHSV(hue, 255, 64);
+    CRGB color = CHSV(hue, 255, 255);
     FastLED.showColor(color);
 }
